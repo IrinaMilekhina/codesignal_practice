@@ -27,17 +27,19 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 """
 from typing import List
 
-nums_1 = [2, 7, 11, 15]
-target_1 = 9
-nums_2 = [3, 2, 4]
-target_2 = 6
-nums_3 = [3, 3]
-target_3 = 6
-nums_4 = [1, 0, 10, -10]
-target_4 = 10
+n_1 = [2, 7, 11, 15]
+t_1 = 9
+n_2 = [3, 2, 4]
+t_2 = 6
+n_3 = [3, 3]
+t_3 = 6
+n_4 = [1, 0, 10, -10]
+t_4 = 10
+n_5 = [-1, -2, -3, -4, -5]
+t_5 = -8
 
 
-def find_terms(nums: List[int], t: int) -> List[int]:
+def find_terms(nums: List[int], target: int) -> List[int]:
     nums_map = {}
     for i, el in enumerate(nums):
         if not nums_map.get(el):
@@ -47,11 +49,15 @@ def find_terms(nums: List[int], t: int) -> List[int]:
     s_nums = sorted(nums)
     first_i = 0
     last_i = len(s_nums) - 1
-    while s_nums[last_i] > t:
-        last_i -= 1
+    if target < 0:
+        while s_nums[first_i] < target:
+            first_i += 1
+    else:
+        while s_nums[last_i] > target:
+            last_i -= 1
     curr_sum = s_nums[first_i] + s_nums[last_i]
-    while curr_sum != t:
-        if curr_sum < t:
+    while curr_sum != target:
+        if curr_sum < target:
             first_i += 1
         else:
             last_i -= 1
@@ -60,7 +66,8 @@ def find_terms(nums: List[int], t: int) -> List[int]:
     return result
 
 
-print(find_terms(nums_1, target_1))  # [0,1]
-print(find_terms(nums_2, target_2))  # [1,2]
-print(find_terms(nums_3, target_3))  # [0,1]
-print(find_terms(nums_4, target_4))  # [1,2]
+print(find_terms(n_1, t_1))  # [0,1]
+print(find_terms(n_2, t_2))  # [1,2]
+print(find_terms(n_3, t_3))  # [0,1]
+print(find_terms(n_4, t_4))  # [1,2]
+print(find_terms(n_5, t_5))  # [2,4]
