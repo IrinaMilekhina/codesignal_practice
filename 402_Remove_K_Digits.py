@@ -32,6 +32,7 @@ num_2 = "10200"
 k_2 = 1
 num_3 = "10"
 k_3 = 2
+num_4 = "4132219"
 
 
 def remove_digits_for_min(num: str, k: int) -> int:
@@ -53,3 +54,4 @@ def remove_digits_for_min(num: str, k: int) -> int:
 print(remove_digits_for_min(num_1, k_1))  # 1219
 print(remove_digits_for_min(num_2, k_2))  # 200
 print(remove_digits_for_min(num_3, k_3))  # 0
+print(remove_digits_for_min(num_4, k_1))  # 1219
