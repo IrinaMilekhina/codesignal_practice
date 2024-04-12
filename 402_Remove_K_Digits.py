@@ -35,7 +35,7 @@ k_3 = 2
 num_4 = "4132219"
 
 
-def remove_digits_for_min(num: str, k: int) -> int:
+def remove_digits_for_min(num: str, k: int) -> str:
     result = ""
     if len(num) > k:
         final_length = len(num) - k
@@ -46,9 +46,9 @@ def remove_digits_for_min(num: str, k: int) -> int:
             num = num[position + 1:]
             k -= position
     try:
-        return int(result)
+        return str(int(result))
     except ValueError:
-        return 0
+        return str(0)
 
 
 print(remove_digits_for_min(num_1, k_1))  # 1219
